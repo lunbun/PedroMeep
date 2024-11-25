@@ -27,6 +27,35 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+val sourcesJar by tasks.creating(Jar::class) {
+    archiveClassifier.set("sources")
+    from(sourceSets.getByName("main").allSource)
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("pedromeep") {
+            groupId = "io.github.lunbun"
+            artifactId = "pedromeep"
+            version = "1.0.0"
+
+            from(components["java"])
+            artifact(sourcesJar)
+
+            pom {
+                packaging = "jar"
+                name.set(rootProject.name)
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            url = uri("${layout.buildDirectory}/repository")
+        }
+    }
+}
+
 tasks.test {
     useJUnitPlatform()
 }
