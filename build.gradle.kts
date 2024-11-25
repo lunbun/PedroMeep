@@ -2,7 +2,7 @@ plugins {
     id("java")
     id("java-library")
     id("maven-publish")
-    id("org.jetbrains.kotlin.jvm") version "2.1.0-RC2"
+    id("org.jetbrains.kotlin.jvm") version "1.8.10"
 }
 
 group = "io.github.lunbun"
@@ -20,11 +20,6 @@ dependencies {
 
 kotlin {
     jvmToolchain(17)
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
 }
 
 val sourcesJar by tasks.creating(Jar::class) {
