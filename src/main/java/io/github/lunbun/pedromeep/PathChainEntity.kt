@@ -89,7 +89,7 @@ class PathChainEntity(
 
         // Create a path for the trajectory sequence
         val drawnPath = Path2D.Double()
-        for (i in 0..<pathChain.size()) {
+        for (i in 0 until pathChain.size()) {
             drawPath(pathChain.getPath(i), drawnPath)
         }
 
